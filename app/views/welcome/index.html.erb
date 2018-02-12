@@ -1,2 +1,10 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="text-center">Blocipedia</h1>
+    <% if user_signed_in? %>
+      <%= render partial: 'signed_in_user' %>
+    <% else %>
+      <%= render partial: 'guest' %>
+    <% end %>
+  </div>
+</div>

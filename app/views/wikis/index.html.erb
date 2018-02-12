@@ -1,2 +1,11 @@
-<h1>Wikis#index</h1>
-<p>Find me in app/views/wikis/index.html.erb</p>
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="text-left">Wikis</h1>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <%= render @wikis %>
+      </table>
+    </div>
+    <p class="text-left"><%= link_to "New wiki", new_wiki_path, class: 'button' %></p>
+  </div>
+</div>
