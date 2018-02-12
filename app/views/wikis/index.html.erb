@@ -1,11 +1,11 @@
-<h1>All Wikis</h1>
-
- <% @wikis.each do |wiki| %>
- 	<div class="media">
- 		<div class="media-body">
- 			<h4 class="media-heading">
- 				<p><%= link_to wiki.title, wiki %></p>
- 			</h4>
- 		</div>
- 	</div>
- <% end %>
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="text-left">Wikis</h1>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <%= render @wikis %>
+      </table>
+    </div>
+    <p class="text-left"><%= link_to "New wiki", new_wiki_path, class: 'button' %></p>
+  </div>
+</div>
