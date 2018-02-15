@@ -1,10 +1,12 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  before_save { self.email = email.downcase }
+  before_save { self.role ||= :standard }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :wiki
+
+  enum role: [:standard, :premium, :admin]
 
   attr_accessor :login
 
