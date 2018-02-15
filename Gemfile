@@ -46,4 +46,4 @@ group :development, :test do
 
 gem 'bootstrap-sass'
 gem 'devise'
-gem "pundit"
+gem 'pundit'
