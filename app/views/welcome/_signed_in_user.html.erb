@@ -1,4 +1,6 @@
 <h3 class="text-center">Hello, <%= current_user.username %>!</h3>
-<hr />
-
+<hr/>
+<% if current_user.role == 'premium' %>
+<h4 class ="text-center">Thank you for being a Premium member!</h4>
+<% end %>
 <%= render template: 'wikis/index' %>
