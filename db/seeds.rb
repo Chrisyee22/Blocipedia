@@ -12,10 +12,13 @@ users = User.all
 15.times do
   Wiki.create!(
   title:     Faker::Simpsons.character,
-  body:      Faker::Simpsons.quote
+  body:      Faker::Simpsons.quote,
+  user:      users.sample
 
   )
 end
+wikis = Wiki.all
+
 
 puts "Seed finished"
 puts "#{User.count} users created"
