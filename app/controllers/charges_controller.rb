@@ -42,6 +42,7 @@ class ChargesController < ApplicationController
   def destroy
     customer = Stripe::Customer.retrieve(current_user.stripe_id)
       current_user.role = :standard
+      current_user.wikis.each { |wiki| wiki.update_attribute(:private, false) }
       flash[:notice] = "Your premium membership has been canceled."
       redirect_to edit_user_registration_path(current_user)
   end
