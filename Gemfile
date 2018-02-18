@@ -42,6 +42,7 @@ source 'https://rubygems.org'
 group :development, :test do
    gem 'rspec-rails', '~> 3.0'
    gem 'rails-controller-testing'
+   gem 'factory_girl_rails', '~> 4.0'	
  end
 
 gem 'bootstrap-sass'
@@ -50,4 +51,5 @@ gem 'pundit'
 gem 'faker'
 gem 'stripe'
 gem 'figaro', '1.0'
+
  
