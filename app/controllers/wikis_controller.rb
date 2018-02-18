@@ -28,12 +28,13 @@ class WikisController < ApplicationController
 
  def edit
    @wiki = Wiki.find(params[:id])
+   @wiki.user = current_user
  end
 
  def update
    @wiki = Wiki.find(params[:id])
    @wiki.assign_attributes(wiki_params)
-
+   @wiki.user = current_user
    if @wiki.save
      flash[:notice] = "Wiki was updated."
      redirect_to @wiki
