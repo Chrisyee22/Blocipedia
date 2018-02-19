@@ -3,4 +3,19 @@
 <% if current_user.role == 'premium' %>
 <h4 class ="text-center">Thank you for being a Premium member!</h4>
 <% end %>
-<%= render template: 'wikis/index' %>
+<h2 class="text-center">My wikis</h2>
+<% if user_has_wikis? %>
+  <div class="table-responsive">
+    <table class="tabel table-striped">
+      <% render @user.wikis %>
+    </table>
+  </div>
+
+  <% else %>
+    <p class="text-center">You haven't created any wikis.</p>
+  <% end %>
+
+  <p class="text-center">
+    <%= link_to "New wiki", new_wiki_path, class: "button" %>
+    <%= link_to "View all wikis", wikis_path, class: "button" %>
+  </p>

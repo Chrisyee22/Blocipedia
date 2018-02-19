@@ -13,7 +13,8 @@ users = User.all
   Wiki.create!(
   title:     Faker::Simpsons.character,
   body:      Faker::Simpsons.quote,
-  user:      users.sample
+  user:      users.sample,
+  private:   [true, false].sample
 
   )
 end
