@@ -12,7 +12,7 @@ module WikisHelper
  end
 
  def user_has_wikis?
-   @user.wiki.any?
+   @user.wikis.any?
  end
 
  def wiki_privacy_notice(wiki)
