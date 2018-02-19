@@ -1,24 +1,24 @@
 class WikiPolicy < ApplicationPolicy
 
   def update?
-    user.present?
-  end
+    attr_reader :user, :wiki
 
-  def new?
-    user.present?
-  end
+      def initialize(user, wiki)
+        @user = user
+        @wiki = wiki
+      end
 
-  def create?
-    user.present?
-  end
+      def index?
+        user.present?
+      end
 
-  def show?
-    user.present?
-  end
+      def show?
+        scope.where(:id => wiki.id).exists?
+      end
 
-  def edit?
-    user.present?
-  end
+      def create?
+        user.present?
+      end
 
   class Scope
     attr_reader :user, :scope
