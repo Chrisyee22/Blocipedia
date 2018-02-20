@@ -21,4 +21,8 @@ class User < ApplicationRecord
       where(conditions.to_hash).first
     end
   end
+
+  def publicize_wikis!
+      wikis.update_all(private: false)
+  end
 end
