@@ -1,19 +1,19 @@
 module WikisHelper
   def user_is_authorized_for_edit?
-<<<<<<< HEAD
     current_user
   end
 
   def user_is_authorized_for_delete?
     current_user && current_user.admin?
   end
-=======
-   current_user
- end
 
  def user_is_authorized_for_private?
    current_user.premium? || current_user.admin?
  end
+
+ def user_is_authorized_for_collaborator_edit?
+    @wiki.user || current_user.admin?
+  end
 
  def user_is_authorized_for_delete?
    current_user.admin?
@@ -22,6 +22,10 @@ module WikisHelper
  def user_has_wikis?
    @user.wikis.any?
  end
+
+ def wiki_has_collaborators?
+    @wiki.collaborators.any?
+  end
 
  def wiki_privacy_notice(wiki)
    if wiki.private
@@ -42,6 +46,5 @@ module WikisHelper
        tables: true
      })
      @markdown.render(content)
-   end
->>>>>>> master
+  end
 end

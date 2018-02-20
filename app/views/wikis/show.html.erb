@@ -2,25 +2,32 @@
   <div class="col-md-12">
     <h1><%= wiki_privacy_notice(@wiki) %></h1>
     <p><%= markdown(@wiki.body).html_safe %></p>
+
+   </div>
+  </div>
+  <div class="row">
+<div class="col-md-12 box-shaded">
+  <h4>Creator</h4>
+  <span class="glyphicon glyphicon-user"></span> <%= @wiki.user.username %>
+  <% if @wiki.private? %>
     <p>&nbsp;</p>
-    <p>
-<<<<<<< HEAD
+    <h4>Collaborators</h4>
+    <%= render partial: 'collaborators/view_collaborators', locals: { wiki: @wiki, user: current_user } %>
+  <% end %>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+  <p>
     <% if user_is_authorized_for_edit? %>
-        <%= link_to "Edit wiki", edit_wiki_path(@wiki), class: 'button' %>
+      <%= link_to "Edit wiki", edit_wiki_path(@wiki), class: "button" %>
     <% end %>
     <% if user_is_authorized_for_delete? %>
-        <%= link_to "Delete wiki", [@wiki], method: :delete, class: 'button', data: { confirm: 'Are you sure you want to delete this wiki?' } %>
+      <%= link_to "Delete wiki", [@wiki], method: :delete, class: "button", data: { confirm: "Are you sure you want to delete this wiki?" } %>
     <% end %>
-    <%= link_to "View all wikis", wikis_path, class: 'button' %></p>
-=======
-      <% if user_is_authorized_for_edit? %>
-        <%= link_to "Edit wiki", edit_wiki_path(@wiki), class: 'button' %>
-      <% end %>
-      <% if user_is_authorized_for_delete? %>
-        <%= link_to "Delete wiki", [@wiki], method: :delete, class: 'button', data: { confirm: 'Are you sure you want to delete this wiki?' } %>
-      <% end %>
-      <%= link_to "View my wikis", root_path, class: 'button' %>
-      <%= link_to "View all wikis", wikis_path, class: 'button' %>
->>>>>>> master
+    <%= link_to "View my wikis", root_path, class: "button" %>
+    <%= link_to "View all wikis", wikis_path, class: "button" %>
+  </p>
   </div>
 </div>
