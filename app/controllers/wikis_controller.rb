@@ -2,32 +2,29 @@ class WikisController < ApplicationController
   before_action :authenticate_user!
 
   def index
-   @wikis = policy_scope(Wiki)
+     @wikis = WikiPolicy::Scope.new(current_user, Wiki).resolve
  end
 
  def show
    @wiki = Wiki.find(params[:id])
    unless (@wiki.private == false) || current_user.premium? || current_user.admin?
-       flash[:alert] = "You must be a premium user to view private wikis."
-  authorize @wiki
-
-       if current_user
-         redirect_to new_charge_path
-       else
-         redirect_to new_user_registration_path
-       end
-     end
- end
+      flash[:alert] = "You must be a premium user to view private wikis."
+      if current_user
+        redirect_to new_charge_path
+      else
+        redirect_to new_user_registration_path
+      end
+    end
+  end		   
 
  def new
    @wiki = Wiki.new
-   authorize @wiki
  end
 
  def create
    @wiki = Wiki.new(wiki_params)
    @wiki.user = current_user
-   authorize @wiki
+
 
    if @wiki.save
      flash[:notice] = "Wiki was saved."

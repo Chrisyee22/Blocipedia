@@ -28,6 +28,7 @@ class ChargesController < ApplicationController
        current_user.stripe_id = customer.id
        current_user.role = :premium
        current_user.save!
+
    flash[:notice] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
    redirect_to root_path # or wherever
 
@@ -42,11 +43,9 @@ class ChargesController < ApplicationController
   def destroy
     customer = Stripe::Customer.retrieve(current_user.stripe_id)
       current_user.role = :standard
-      current_user.save!
-      p current_user
       current_user.wikis.each  do |wiki|
         wiki.update_attribute(:private, false)
-        wiki.save!
+
       end
       flash[:notice] = "Your premium membership has been canceled."
       redirect_to root_path
