@@ -15,7 +15,7 @@ class WikisController < ApplicationController
         redirect_to new_user_registration_path
       end
     end
-  end		   
+  end
 
  def new
    @wiki = Wiki.new
@@ -38,14 +38,13 @@ class WikisController < ApplicationController
  def edit
    @wiki = Wiki.find(params[:id])
    @wiki.user = current_user
-   authorize @wiki
+
  end
 
  def update
    @wiki = Wiki.find(params[:id])
    @wiki.assign_attributes(wiki_params)
    @wiki.user = current_user
-   authorize @wiki
    if @wiki.save
      flash[:notice] = "Wiki was updated."
      redirect_to @wiki

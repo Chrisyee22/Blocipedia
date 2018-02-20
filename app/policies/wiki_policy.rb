@@ -30,3 +30,4 @@ class WikiPolicy < ApplicationPolicy
      wikis
     end
   end
+end
