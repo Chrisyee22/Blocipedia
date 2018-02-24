@@ -2,10 +2,15 @@ class ChargesController < ApplicationController
 
 
   def new
+    if current_user.premium? || current_user.admin?
+      redirect_to edit_user_registration_path(current_user)
+    end
 
     @stripe_btn_data = {
-     current_user.publicize_wikis!
-   }
+      key: "#{ Rails.configuration.stripe[:publishable_key] }",
+      description: "Premium Membership",
+      amount: amount
+    }
   end
 
   def create
@@ -55,5 +60,4 @@ class ChargesController < ApplicationController
      def amount
        15_00
      end
-
 end
