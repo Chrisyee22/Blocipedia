@@ -15,3 +15,21 @@
  */
  @import "bootstrap-sprockets";
   @import "bootstrap";
+
+
+
+body::after{
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://drive.google.com/uc?export=view&id=1xW6poDV6gtc9VNUrarI7_hPvQUGx0YFd');
+  background-size: cover;
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
