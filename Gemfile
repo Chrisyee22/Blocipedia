@@ -43,9 +43,9 @@ source 'https://rubygems.org'
 group :development, :test do
    gem 'rspec-rails', '~> 3.0'
    gem 'rails-controller-testing'
-   # gem 'factory_bot'
+   gem 'factory_bot'
  end
-gem 'factory_bot'
+
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'pundit'
